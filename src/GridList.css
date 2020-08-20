@@ -1,0 +1,14 @@
+.gridList {
+  width: 70%;
+  margin: 0 auto;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+}
+
+@media (max-width: 56.25rem) {
+  .gridList {
+    width: 100%;
+  }
+}

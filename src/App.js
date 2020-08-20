@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import GridList from "./GridList";
+import movieList from "./movieList";
+import SearchBar from "./SearchBar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    list: movieList,
+  };
+
+  filterList = (searchTerm) => {
+    const newList = movieList.filter((movie) => {
+      if (
+        movie.title
+          .toLowerCase()
+          .split(" ")
+          .join("")
+          .indexOf(searchTerm.toLowerCase().split(" ").join("")) != -1
+      ) {
+        return movie;
+      }
+    });
+    this.setState({ list: newList });
+  };
+  render() {
+    return (
+      <main>
+        <SearchBar
+          placeholder="Search for a movie title"
+          filterList={this.filterList}
+        />
+        <GridList movieList={this.state.list} />
+      </main>
+    );
+  }
 }
 
 export default App;
