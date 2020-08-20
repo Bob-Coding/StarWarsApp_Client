@@ -1,0 +1,25 @@
+.movieContainer {
+  width: 55%;
+  margin: 0 auto;
+}
+
+.movieContainer h2 {
+  margin-top: 2rem;
+}
+
+.movieContainer figure {
+  height: 50rem;
+  width: 100%;
+}
+
+.movieContainer figure img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 56.25rem) {
+  .movieContainer {
+    width: 100%;
+  }
+}
